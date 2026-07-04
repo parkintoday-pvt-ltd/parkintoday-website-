@@ -143,7 +143,7 @@ function lbl(tok: Tok): CSSProperties {
   return { fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: tok.muted, marginBottom: 18 };
 }
 function disp(): CSSProperties {
-  return { fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontSize: "clamp(2.2rem,4.5vw,3.4rem)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.03em" };
+  return { fontFamily: "'Instrument Serif', serif", fontStyle: "italic", fontSize: "clamp(1.8rem,4.5vw,3.4rem)", fontWeight: 400, lineHeight: 1.1, letterSpacing: "-0.03em" };
 }
 function crd(tok: Tok, extra: CSSProperties = {}): CSSProperties {
   const shadow = tok.bg === "#0f172a" ? "0 1px 4px rgba(0,0,0,0.35)" : "0 1px 3px rgba(0,0,0,0.06)";
@@ -168,7 +168,7 @@ function Nav({ tok, dark, toggle }: { tok: Tok; dark: boolean; toggle: () => voi
       pointerEvents: "none",
     }}>
       {/* Pill */}
-      <nav style={{
+      <nav className="nav-container" style={{
         pointerEvents: "all",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         gap: 24,
@@ -194,7 +194,7 @@ function Nav({ tok, dark, toggle }: { tok: Tok; dark: boolean; toggle: () => voi
         </a>
 
         {/* Links */}
-        <div style={{ display: "flex", gap: 22, alignItems: "center" }}>
+        <div className="nav-links" style={{ display: "flex", gap: 22, alignItems: "center" }}>
           {[["How it Works", "#how-it-works"], ["Features", "#features"], ["For Investors", "#investors"]].map(([n, h]) => (
             <a key={n} href={h}
               style={{ fontSize: "0.84rem", fontWeight: 500, color: tok.muted, transition: "color 0.15s", whiteSpace: "nowrap" }}
@@ -205,7 +205,7 @@ function Nav({ tok, dark, toggle }: { tok: Tok; dark: boolean; toggle: () => voi
         </div>
 
         {/* Actions */}
-        <div style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
+        <div className="nav-actions" style={{ display: "flex", gap: 8, alignItems: "center", flexShrink: 0 }}>
           <button onClick={toggle} aria-label="Toggle theme" style={{
             width: 32, height: 32, borderRadius: 999,
             border: `1px solid ${tok.border}`, background: tok.bg2, color: tok.text,
@@ -255,7 +255,7 @@ function Hero({ tok }: { tok: Tok }) {
       background: heroBg,
     }}>
       <div style={WRAP}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+        <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
           {/* Left */}
           <div>
             <p style={lbl(tok)}>🇮🇳 Available in Chennai</p>
@@ -267,7 +267,7 @@ function Hero({ tok }: { tok: Tok }) {
               Find a parking spot near you, book it in a few taps, drive straight in —
               and pay only for the time you actually use. No tickets, no queues, no cash.
             </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <div className="hero-buttons" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <a href="#how-it-works" style={{
                 display: "flex", alignItems: "center", gap: 8,
                 padding: "11px 22px", borderRadius: 999,
@@ -293,7 +293,7 @@ function Hero({ tok }: { tok: Tok }) {
           </div>
 
           {/* Right — stat cards 2×2 */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <div className="hero-stats" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
             {stats.map((s, i) => (
               <div key={i} style={crd(tok, { padding: "22px 20px" })}>
                 <div style={{
@@ -317,8 +317,8 @@ function HowItWorks({ tok }: { tok: Tok }) {
   return (
     <section id="how-it-works" style={{ ...SEC, borderTop: `1px solid ${tok.border2}` }}>
       <div style={WRAP}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: 80, alignItems: "start" }}>
-          <div style={{ position: "sticky", top: 90 }}>
+        <div className="how-it-works-grid" style={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: 80, alignItems: "start" }}>
+          <div className="how-it-works-left" style={{ position: "sticky", top: 90 }}>
             <p style={lbl(tok)}>How it works</p>
             <h2 style={{ ...disp(), marginBottom: 18 }}>
               Parking done<br />
@@ -368,7 +368,7 @@ function Features({ tok }: { tok: Tok }) {
         <p style={{ fontSize: "0.95rem", color: tok.muted, lineHeight: 1.7, marginBottom: 52, maxWidth: 500 }}>
           We built PARKINTODAY around a simple idea — parking should be the last thing on your mind.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))", gap: 14 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 14 }}>
           {features.map((f, i) => (
             <div key={i} style={crd(tok)}
               onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.transform = "translateY(-3px)"; el.style.boxShadow = sdw; }}
@@ -395,8 +395,8 @@ function Investors({ tok }: { tok: Tok }) {
   return (
     <section id="investors" style={{ ...SEC, borderTop: `1px solid ${tok.border2}` }}>
       <div style={WRAP}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
-          <div>
+        <div className="investors-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
+          <div className="investors-left">
             <p style={lbl(tok)}>For investors</p>
             <h2 style={{ ...disp(), marginBottom: 20 }}>
               A massive market,<br />
@@ -441,7 +441,7 @@ function CTA({ tok }: { tok: Tok }) {
   return (
     <section id="contact" style={{ ...SEC, borderTop: `1px solid ${tok.border2}` }}>
       <div style={WRAP}>
-        <div style={{ background: tok.text, borderRadius: 20, padding: "64px 48px", textAlign: "center" }}>
+        <div className="cta-box" style={{ background: tok.text, borderRadius: 20, padding: "64px 48px", textAlign: "center" }}>
           <p style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: tok.bg, opacity: 0.4, marginBottom: 18 }}>
             Now live · Chennai
           </p>

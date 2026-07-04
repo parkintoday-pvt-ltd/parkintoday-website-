@@ -48,3 +48,73 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Responsive overrides */
+@media (max-width: 768px) {
+  section {
+    padding: 56px 0 !important;
+  }
+  
+  .nav-container {
+    padding: 6px 8px !important;
+    gap: 12px !important;
+  }
+  
+  .nav-links {
+    display: none !important;
+  }
+  
+  .nav-actions {
+    gap: 6px !important;
+  }
+  
+  .nav-actions a {
+    padding: 6px 12px !important;
+    font-size: 0.76rem !important;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .how-it-works-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  .how-it-works-left {
+    position: static !important;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  
+  .investors-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  
+  .investors-left {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .cta-box {
+    padding: 48px 20px !important;
+    border-radius: 16px !important;
+  }
+  
+  .cta-box h2 {
+    font-size: 1.8rem !important;
+  }
+}
